@@ -15,4 +15,5 @@ add_executable (process-keeper
 	)
 
 target_link_libraries (process-keeper
+	boost_program_options
 	)
