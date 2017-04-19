@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process-keeper>
+	<log>debug.log</log>
+	<process>
+		<name>netcat</name>
+		<cwd>/tmp</cwd>
+		<exe>/bin/nc</exe>
+		<args>
+			<arg>-l</arg>
+			<arg>8000</arg>
+		</args>
+	</process>
+	<process>
+		<name>socat</name>
+		<cwd>/</cwd>
+		<exe>/usr/bin/socat</exe>
+		<args>
+			<arg>-</arg>
+			<arg>TCP4:localhost:8000</arg>
+		</args>
+	</process>
+</process-keeper>
