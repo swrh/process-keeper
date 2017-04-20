@@ -3,7 +3,6 @@
 #include <boost/program_options/options_description.hpp>
 #include <boost/program_options/parsers.hpp>
 #include <boost/program_options/variables_map.hpp>
-#include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
 
 #include <cstring>
@@ -46,19 +45,7 @@ application::parse_command_line(int argc, char *argv[])
     }
 
     if (vm.count("config-file")) {
-        property_tree::ptree tree;
-        property_tree::read_xml(vm["config-file"].as<string>(), tree);
-
-        cout << "log: " << tree.get<std::string>("process-keeper.log") << endl;
-        for (property_tree::ptree::value_type &v : tree.get_child("process-keeper")) {
-            if (strcmp(v.first.data(), "process") == 0) {
-                cout << v.first.data() << ": " << v.second.get<std::string>("name");
-                for (property_tree::ptree::value_type &w : v.second.get_child("args")) {
-                    cout << " " << w.second.data();
-                }
-                cout << endl;
-            }
-        }
+        cfg.read_file(vm["config-file"].as<string>());
     }
 }
 

@@ -1,6 +1,8 @@
 #if !defined(_APPLICATION_HPP_)
 #define _APPLICATION_HPP_
 
+#include "configuration.hpp"
+
 #include <string>
 
 class
@@ -8,6 +10,8 @@ application
 {
 private:
     const std::string version;
+
+    configuration cfg;
 
 public:
     application(const std::string &version);

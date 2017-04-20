@@ -13,6 +13,8 @@ endif ()
 add_executable (process-keeper
 	./application.cpp
 	./application.hpp
+	./configuration.cpp
+	./configuration.hpp
 	./main.cpp
 	)
 
