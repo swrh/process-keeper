@@ -3,13 +3,30 @@
 
 #include <boost/property_tree/ptree.hpp>
 
+#include <list>
 #include <string>
+#include <vector>
 
 class
 configuration
 {
+public:
+    struct
+    process
+    {
+        std::string name;
+        std::string cwd;
+        std::string exe;
+        std::vector<std::string> args;
+
+        std::string to_string() const;
+    };
+
 private:
     boost::property_tree::ptree tree;
+
+    std::list<process> processes;
+    std::string log;
 
 public:
     configuration();
